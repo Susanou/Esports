@@ -2,6 +2,8 @@ import discord
 import asyncio
 import re
 
+TOKEN = 'NDg0MTgwOTkwNDIwNTgyNDEx.DmeSqQ.Fcy5qNyhU_57Ky5MmgmGWqDwo2U'
+
 client = discord.Client()
 
 @client.event
@@ -22,12 +24,19 @@ async def on_message(message):
         print("me")
         return None
     elif message.channel.name == "introductions":
+
+        cwru = discord.utils.get(message.server.roles, name = "cwru")
+
+        if message.author.roles:
+            for value in message.author.roles:
+                if value == cwru:
+                    return None
         if name_formatted(message.author.nick):
-            await client.send_message(message.channel, "Welcome {}, give me a second to flip some bits and you should be able to use our channels.".format(message.author.name))
+            await client.send_message(message.channel, "Welcome {}, give me a second to flip some bits and you should be able to use our channels.".format(message.author.mention))
             role = await get_member_role(message.server)
             await client.add_roles(message.author, role)
         else:
-            await client.send_message(message.channel, "Hi {}, please edit your nickname to our server's standard [real name]([in-game name]) and post your introduction again.".format(message.author.name))
+            await client.send_message(message.channel, "Hi {}, please edit your nickname to our server's standard [real name] ([in-game name]) and post your introduction again.".format(message.author.mention))
 
 def name_formatted(name):
     print(name)
@@ -55,4 +64,4 @@ def name_formatted(name):
 #        await asyncio.sleep(5)
 #        await client.send_message(message.channel, 'Done sleeping')
 
-client.run('NDg0MTgwOTkwNDIwNTgyNDEx.DmeSqQ.Fcy5qNyhU_57Ky5MmgmGWqDwo2U')
+client.run(TOKEN)
