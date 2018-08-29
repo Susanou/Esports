@@ -2,8 +2,6 @@ import discord
 import asyncio
 import re
 
-TOKEN = 'NDg0MTgwOTkwNDIwNTgyNDEx.DmeSqQ.Fcy5qNyhU_57Ky5MmgmGWqDwo2U'
-
 client = discord.Client()
 
 @client.event
@@ -57,4 +55,4 @@ def name_formatted(name):
 #        await asyncio.sleep(5)
 #        await client.send_message(message.channel, 'Done sleeping')
 
-client.run(TOKEN)
+client.run('NDg0MTgwOTkwNDIwNTgyNDEx.DmeSqQ.Fcy5qNyhU_57Ky5MmgmGWqDwo2U')
